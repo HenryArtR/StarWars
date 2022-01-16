@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Result } from '../../interfaces/listStarships.interface';
+import { SwapiService } from '../../services/swapi.service';
 
 @Component({
   selector: 'app-info-ships',
@@ -6,11 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class InfoShipsComponent implements OnInit {
+export class InfoShipsComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  imgShip: string = ''
+  infoShip!: Result;
+  id: string = ''
 
-  ngOnInit(): void {
+  constructor(private swapiSrv: SwapiService, private route: ActivatedRoute) {}
+
+
+  
+  ngOnInit() {
+    this.imgShip = this.swapiSrv.getImgShip()
+    this.swapiSrv.getInfo().subscribe(info => this.infoShip = info)
+    this.id = this.route.snapshot.paramMap.get('id')!
+  }
+  
+  ngOnDestroy() {
+    this.swapiSrv.saveId(this.id)
   }
 
 }

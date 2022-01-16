@@ -1,1 +1,10 @@
-<p>listado works!</p>
+<div class="row">
+    <div class="col">
+      <ul *ngFor="let nave of listado" class="list-group list-group">
+        <li class="list-group-item m-1" (click)="saveUrl(nave.url)">
+          <h5>{{nave.name}}</h5>
+          <small>{{nave.model}}</small>
+        </li> 
+      </ul>
+    </div>
+  </div>

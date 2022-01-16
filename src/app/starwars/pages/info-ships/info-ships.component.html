@@ -1,1 +1,66 @@
-<p>info-ships works!</p>
+<div class="row" *ngIf="!infoShip; else info">
+    <div class="alert alert-info">
+        cargando...
+    </div>
+</div>
+
+<ng-template #info class="container">
+    <div class="row">
+        
+            <img [src]="imgShip" class="img-fluid" alt="">
+        
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h1>{{infoShip.name}}</h1>
+        </div>
+        <div class="col-6">
+            <p> <strong>Model:</strong> {{infoShip.model}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Manufacturer:</strong> {{infoShip.manufacturer}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Cost in credits:</strong> {{infoShip.cost_in_credits}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Length:</strong> {{infoShip.length}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Max atmosphering speed:</strong> {{infoShip.max_atmosphering_speed}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Crew:</strong> {{infoShip.crew}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Passengers:</strong> {{infoShip.passengers}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Cargo capacity:</strong> {{infoShip.cargo_capacity}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Consumables:</strong> {{infoShip.consumables}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Hyperdrive rating:</strong> {{infoShip.hyperdrive_rating}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>MGLT:</strong> {{infoShip.MGLT}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Starship class:</strong> {{infoShip.starship_class}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Pilots:</strong> {{infoShip.pilots}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Films:</strong> {{infoShip.films}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Created:</strong> {{infoShip.created}}</p>
+        </div>
+        <div class="col-6">
+            <p> <strong>Edited:</strong> {{infoShip.edited}}</p>
+        </div>
+    </div>
+</ng-template>

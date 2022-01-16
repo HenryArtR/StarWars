@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListOfStarships } from '../interfaces/listStarships.interface';
+import { ListOfStarships, Result } from '../interfaces/listStarships.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,9 @@ import { ListOfStarships } from '../interfaces/listStarships.interface';
 export class SwapiService {
 
   private urlListado: string = "https://swapi.dev/api/starships/?page=1"
+  private urlInfoShip: string = "https://swapi.dev/api/starships"
+  private urlImgship: string = "https://starwars-visualguide.com/assets/img/starships"
+  private id: string = ''
 
   constructor( private http: HttpClient) {}
 
@@ -16,8 +19,23 @@ export class SwapiService {
     return this.http.get<ListOfStarships>(this.urlListado)
   }
 
-  infoNave(url: string){
-    return this.http.get(url)
+  saveId(id: string){
+    this.id = id
+    console.log(id)
   }
+
+  getInfo(): Observable<Result>{
+    let info = `${this.urlInfoShip}/${this.id}`
+    return this.http.get<Result>(info)
+  }
+  getID(): string {
+    return this.id
+  }
+
+  getImgShip(): string{
+    let img = `${this.urlImgship}/${this.id}.jpg`
+    return img
+  }
+
 
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { InfoShipsComponent } from './pages/info-ships/info-ships.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import { HomeComponent } from './pages/home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class StarwarsModule { }

@@ -3,23 +3,9 @@
     <h1 class="text-center m-3">StarWars</h1>
   </div>
 </div>
-<nav class="navbar bg-black d-flex justify-content-center"> 
-  <ul class="list-group list-group-horizontal">
-    <li class="list-group-item m-1" >HOME</li>
-    <li class="list-group-item m-1" (click)="mostrarListado()">STARSHIPS</li>
-  </ul>
-</nav>
+<app-navbar></app-navbar>
 
 <div class="container mt-2">
-  <div class="row">
-    <div class="col">
-      <ul *ngFor="let nave of listado" class="list-group list-group">
-        <li class="list-group-item m-1" (click)="mostrarInfo(nave.url)">
-          <h5>{{nave.name}}</h5>
-          <small>{{nave.model}}</small>
-        </li> 
-      </ul>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
