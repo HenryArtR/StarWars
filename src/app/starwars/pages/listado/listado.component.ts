@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Result } from '../../interfaces/listStarships.interface';
 import { SwapiService } from '../../services/swapi.service';
 
@@ -12,16 +12,25 @@ import { SwapiService } from '../../services/swapi.service';
 export class ListadoComponent implements OnInit {
 
   listado: Result[] = []
-  constructor(private swapiSrv: SwapiService, private router: Router){}
+  pag: number = 1
+  constructor(private swapiSrv: SwapiService, private router: Router, private route: ActivatedRoute){}
   
   saveUrl(url:string){
     let id = url.match(/(\d+)/g)
     this.swapiSrv.saveId(id![0])
     this.router.navigate(['/starships', id![0]])
   }
+  mostrarMas(){
+    this.pag++
+    let pag = this.pag.toString()
+    this.swapiSrv.listadoNave(pag).subscribe(list => {
+      this.listado = this.listado.concat(list.results)
+    })
+  }
 
   ngOnInit() {
-    this.swapiSrv.listadoNave().subscribe(list => {
+    let pag = this.pag.toString()
+    this.swapiSrv.listadoNave(pag).subscribe(list => {
       this.listado = list.results
     })
   }

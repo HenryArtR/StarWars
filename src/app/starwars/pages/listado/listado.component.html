@@ -1,10 +1,13 @@
 <div class="row">
-    <div class="col">
-      <ul *ngFor="let nave of listado" class="list-group list-group">
-        <li class="list-group-item m-1" (click)="saveUrl(nave.url)">
-          <h5>{{nave.name}}</h5>
-          <small>{{nave.model}}</small>
-        </li> 
-      </ul>
-    </div>
+  <div class="col">
+    <ul *ngFor="let nave of listado" class="list-group list-group">
+      <li class="list-group-item m-1" (click)="saveUrl(nave.url)">
+        <h5>{{nave.name}}</h5>
+        <small>{{nave.model}}</small>
+      </li> 
+    </ul>
+    <button class="btn btn-sm btn-secondary" (click)="mostrarMas()">View more</button>
   </div>
+</div>
+
+

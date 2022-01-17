@@ -8,15 +8,16 @@ import { ListOfStarships, Result } from '../interfaces/listStarships.interface';
 })
 export class SwapiService {
 
-  private urlListado: string = "https://swapi.dev/api/starships/?page=1"
+  private urlListado: string = "https://swapi.dev/api/starships/?page="
   private urlInfoShip: string = "https://swapi.dev/api/starships"
   private urlImgship: string = "https://starwars-visualguide.com/assets/img/starships"
   private id: string = ''
 
   constructor( private http: HttpClient) {}
 
-  listadoNave(): Observable<ListOfStarships>{
-    return this.http.get<ListOfStarships>(this.urlListado)
+  listadoNave(pag?: string): Observable<ListOfStarships>{
+    let listado = `${this.urlListado}${pag}`
+    return this.http.get<ListOfStarships>(listado)
   }
 
   saveId(id: string){

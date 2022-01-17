@@ -20,13 +20,14 @@ export class InfoShipsComponent implements OnInit, OnDestroy {
 
   
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id')!
+    this.swapiSrv.saveId(this.id)
     this.imgShip = this.swapiSrv.getImgShip()
     this.swapiSrv.getInfo().subscribe(info => this.infoShip = info)
-    this.id = this.route.snapshot.paramMap.get('id')!
   }
   
   ngOnDestroy() {
-    this.swapiSrv.saveId(this.id)
+    
   }
 
 }
