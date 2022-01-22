@@ -1,29 +1,31 @@
-<div class="row d-flex justify-content-between">
-  <!-- Estilizar contenido -->
-  <div class="col-2">
-    <h4></h4>
-  </div>
-  <!-- fin -->
-  <div class="col-2">
-    <img src="../assets/img/starwarslogo.png" routerLink="" class="img-fluid" alt="">
-  </div>
-  
-  <div class="col-2">
-    <div class="btn-group d-flex justify-content-end">
-      <button class="btn btn-outline-dark" routerLink="login">
-        Log in
-      </button>
-      <button class="btn btn-outline-dark" routerLink="signUp">
-        Sign up
-      </button>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-between">
+    <!-- Estilizar contenido -->
+    <div class="col-2">
+      <h4></h4>
     </div>
-  </div>
+    <!-- fin -->
+    <div class="col-2">
+      <img src="../assets/img/starwarslogo.png" routerLink="home" class="img-fluid" alt="">
+    </div>
+    
+    <div class="col-2">
+      <div class="btn-group d-flex justify-content-end">
+        <button class="btn btn-outline-dark" routerLink="login">
+          Log in
+        </button>
+        <button class="btn btn-outline-dark" routerLink="signUp">
+          Sign up
+        </button>
+      </div>
+    </div>
 
-</div>
-<app-navbar></app-navbar>
-<div class="row-12 d-flex justify-content-center bgbody">
-  <div class="col-9 mt-3" [@routerAnimation] = "prepareRoute(outlet)">
-    <router-outlet #outlet = "outlet"></router-outlet>
+  </div>
+  <app-navbar></app-navbar>
+  <div class="row-12 d-flex justify-content-center bgbody min-vh-100">
+    <div class="col-9 mt-3" [@routerAnimation] = "prepareRoute(outlet)">
+      <router-outlet #outlet = "outlet"></router-outlet>
+    </div>
   </div>
 </div>
 
