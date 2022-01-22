@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center p-5">
+    <div class="col-lg-6 col-md-6 bg-body rounded">
+        <form class="row p-5 d-flex justify-content-center" autocomplete="off" [formGroup] = "form" (ngSubmit)="enviar(form.value)">
+            <div class="col-lg-6">
+                <label class="form-label" >Name:</label>
+                <input class="form-control" type="text" placeholder="Name" formControlName = "nombre">
+                <small class="text-danger" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.dirty">Introduce el nombre</small>
+            </div>
+            <div class="col-lg-6">
+                <label class="form-label" >Lastname:</label>
+                <input class="form-control" type="text" placeholder="Lastname" formControlName = "apellido">
+                <small class="text-danger" *ngIf="form.get('apellido')?.invalid && form.get('apellido')?.dirty">Introduce el apellido</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Email:</label>
+                <input class="form-control" type="email" placeholder="alguien@gmail.com" formControlName = "email">
+                <small class="text-danger" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty">Introduce bien el email</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label" >Username:</label>
+                <input class="form-control" type="text" placeholder="Username" formControlName = "usuario">
+                <small class="text-danger" *ngIf="form.get('usuario')?.invalid && form.get('usuario')?.dirty">Introduce el usuario</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label" >Password:</label>
+                <input class="form-control" type="password" placeholder="Password" formControlName = "contrasena">
+                <small class="text-danger" *ngIf="form.get('contrasena')?.invalid && form.get('contrasena')?.dirty">Introduce de 6-14 caracteres</small>
+            </div>
+            <small class="alert alert-danger mt-3" [hidden]="oculto">
+                Rellena todos los campos
+            </small>
+            <small class="alert alert-danger mt-3" [hidden]="noExist">
+                El usuario ya existe
+            </small>
+            <div class="mt-3 d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-dark">Subscribe</button>
+            </div>        
+        </form>
+    </div>
+</div>
+

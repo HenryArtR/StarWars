@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Result } from '../../interfaces/listStarships.interface';
 import { SwapiService } from '../../services/swapi.service';
+import { UserDataService } from '../../services/user-data.service';
 
 @Component({
   selector: 'app-listado',
@@ -11,9 +13,14 @@ import { SwapiService } from '../../services/swapi.service';
 })
 export class ListadoComponent implements OnInit {
 
-  listado: Result[] = []
-  pag: number = 1
-  constructor(private swapiSrv: SwapiService, private router: Router, private route: ActivatedRoute){}
+  listado: Result[] = [];
+  pag: number = 1;
+  nombre: string = '';
+  apellido: string = '';
+  texto: string = '';
+  
+  
+  constructor(private swapiSrv: SwapiService, private router: Router, private route: ActivatedRoute, private srvData: UserDataService){}
   
   saveUrl(url:string){
     let id = url.match(/(\d+)/g)
@@ -33,6 +40,7 @@ export class ListadoComponent implements OnInit {
     this.swapiSrv.listadoNave(pag).subscribe(list => {
       this.listado = list.results
     })
+
   }
 
 }

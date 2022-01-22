@@ -4,6 +4,10 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import { InfoShipsComponent } from './pages/info-ships/info-ships.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
+import { SignUpComponent } from './pages/signUp/signUp.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { PilotsComponent } from './pages/info-ships/pilots/pilots.component';
 
 
 
@@ -11,16 +15,22 @@ import { RouterModule } from '@angular/router';
   declarations: [
     ListadoComponent,
     InfoShipsComponent,
-    HomeComponent
+    HomeComponent,
+    SignUpComponent,
+    LoginComponent,
+    PilotsComponent
   ],
   exports: [
     ListadoComponent,
     InfoShipsComponent,
-    HomeComponent
+    HomeComponent,
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class StarwarsModule { }

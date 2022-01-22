@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListOfStarships, Result } from '../interfaces/listStarships.interface';
+import { ListOfStarships, Pilots, Result } from '../interfaces/listStarships.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,10 @@ export class SwapiService {
 
   private urlListado: string = "https://swapi.dev/api/starships/?page="
   private urlInfoShip: string = "https://swapi.dev/api/starships"
+  private urlPilots: string = 'https://swapi.dev/api/people'
   private urlImgship: string = "https://starwars-visualguide.com/assets/img/starships"
   private id: string = ''
+  private number: string = ''
 
   constructor( private http: HttpClient) {}
 
@@ -20,9 +22,16 @@ export class SwapiService {
     return this.http.get<ListOfStarships>(listado)
   }
 
+  getPilots(num: string): Observable<Pilots>{
+    let pilotos = `${this.urlPilots}/${num}`
+    return this.http.get<Pilots>(pilotos)
+  }
+
   saveId(id: string){
     this.id = id
-    console.log(id)
+  }
+  saveNum(num: string){
+    this.number = num
   }
 
   getInfo(): Observable<Result>{

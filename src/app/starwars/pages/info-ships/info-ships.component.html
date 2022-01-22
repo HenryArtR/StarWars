@@ -8,59 +8,62 @@
     <div class="row">
         
             <img [src]="imgShip" class="img-fluid" alt="">
+            <div class="col-12 ms-5">
+                <h1 class="text-white">{{infoShip.name}}</h1>
+            </div>
         
     </div>
-    <div class="row">
-        <div class="col-12">
-            <h1>{{infoShip.name}}</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-5 m-1 list-group-item">
+            <strong>Model:</strong> {{infoShip.model}}
         </div>
-        <div class="col-6">
-            <p> <strong>Model:</strong> {{infoShip.model}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Manufacturer:</strong> {{infoShip.manufacturer}}
         </div>
-        <div class="col-6">
-            <p> <strong>Manufacturer:</strong> {{infoShip.manufacturer}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Cost in credits:</strong> {{infoShip.cost_in_credits}}
         </div>
-        <div class="col-6">
-            <p> <strong>Cost in credits:</strong> {{infoShip.cost_in_credits}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Length:</strong> {{infoShip.length}}
         </div>
-        <div class="col-6">
-            <p> <strong>Length:</strong> {{infoShip.length}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Max atmosphering speed:</strong> {{infoShip.max_atmosphering_speed}}
         </div>
-        <div class="col-6">
-            <p> <strong>Max atmosphering speed:</strong> {{infoShip.max_atmosphering_speed}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Crew:</strong> {{infoShip.crew}}
         </div>
-        <div class="col-6">
-            <p> <strong>Crew:</strong> {{infoShip.crew}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Passengers:</strong> {{infoShip.passengers}}
         </div>
-        <div class="col-6">
-            <p> <strong>Passengers:</strong> {{infoShip.passengers}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Cargo capacity:</strong> {{infoShip.cargo_capacity}}
         </div>
-        <div class="col-6">
-            <p> <strong>Cargo capacity:</strong> {{infoShip.cargo_capacity}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Consumables:</strong> {{infoShip.consumables}}
         </div>
-        <div class="col-6">
-            <p> <strong>Consumables:</strong> {{infoShip.consumables}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Hyperdrive rating:</strong> {{infoShip.hyperdrive_rating}}
         </div>
-        <div class="col-6">
-            <p> <strong>Hyperdrive rating:</strong> {{infoShip.hyperdrive_rating}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>MGLT:</strong> {{infoShip.MGLT}}
         </div>
-        <div class="col-6">
-            <p> <strong>MGLT:</strong> {{infoShip.MGLT}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Starship class:</strong> {{infoShip.starship_class}}
         </div>
-        <div class="col-6">
-            <p> <strong>Starship class:</strong> {{infoShip.starship_class}}</p>
+        <div class="col-5 m-1 list-group-item" >
+            <div *ngFor="let piloto of infoPilots; let i=index" class="m-1">
+                <strong>Pilot {{i+1}}:</strong> <div class="btn btn-outline-secondary btn-sm" (click)="getPiloto(piloto)"> {{piloto}}</div> 
+            </div>
         </div>
-        <div class="col-6">
-            <p> <strong>Pilots:</strong> {{infoShip.pilots}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Films:</strong> {{infoShip.films}}
         </div>
-        <div class="col-6">
-            <p> <strong>Films:</strong> {{infoShip.films}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Created:</strong> {{infoShip.created}}
         </div>
-        <div class="col-6">
-            <p> <strong>Created:</strong> {{infoShip.created}}</p>
-        </div>
-        <div class="col-6">
-            <p> <strong>Edited:</strong> {{infoShip.edited}}</p>
+        <div class="col-5 m-1 list-group-item">
+            <strong>Edited:</strong> {{infoShip.edited}}
         </div>
     </div>
+        
 </ng-template>

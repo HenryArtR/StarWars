@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+.bgbody {
+    background-image: url('https://w0.peakpx.com/wallpaper/114/551/HD-wallpaper-stardust-black-edge-galaxy-night-sky-star-stars.jpg');
+    background-attachment: fixed;
+}

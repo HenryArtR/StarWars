@@ -1,6 +1,13 @@
 <nav class="navbar bg-black d-flex justify-content-center"> 
-    <ul class="list-group list-group-horizontal">
-      <li class="list-group-item m-1" routerLink="">HOME</li>
-      <li class="list-group-item m-1" routerLink="listado">STARSHIPS</li>
-    </ul>
+    
+  <div class="col-2">
+    <div class="btn-group d-flex">
+      <button class="btn btn-outline-light" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        HOME
+      </button>
+      <button class="btn btn-outline-light" routerLink="login" routerLinkActive="active">
+        STARSHIPS
+      </button>
+    </div>
+  </div>
 </nav>
