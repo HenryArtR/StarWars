@@ -11,12 +11,18 @@ import { SwapiService } from 'src/app/starwars/services/swapi.service';
 export class PilotsComponent implements OnInit {
 
   pilotos!: Pilots;
+  mostrar: boolean = false;
 
   constructor(private srvSwapi: SwapiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let num = this.route.snapshot.paramMap.get('id')
-    this.srvSwapi.getPilots(num!).subscribe(pilots => this.pilotos = pilots)
+    this.srvSwapi.getPilots(num!).subscribe(pilots => {
+      this.pilotos = pilots
+      if(this.pilotos = pilots){
+        this.mostrar = true
+      }
+    })
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="mostrar; else info">
     <div class="row">
         <div class="col">
             <div class="list-group">
@@ -34,3 +34,9 @@
         </div>
     </div>
 </div>
+<ng-template #info>
+    <div class="alert alert-info">
+        Cargando...
+    </div>
+</ng-template>
+

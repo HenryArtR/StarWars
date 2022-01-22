@@ -18,6 +18,7 @@ export class ListadoComponent implements OnInit {
   nombre: string = '';
   apellido: string = '';
   texto: string = '';
+  verMas: boolean = false;
   
   
   constructor(private swapiSrv: SwapiService, private router: Router, private route: ActivatedRoute, private srvData: UserDataService){}
@@ -39,7 +40,11 @@ export class ListadoComponent implements OnInit {
     let pag = this.pag.toString()
     this.swapiSrv.listadoNave(pag).subscribe(list => {
       this.listado = list.results
+      if(this.listado.length > 0){
+        this.verMas = true
+      }
     })
+    
 
   }
 
