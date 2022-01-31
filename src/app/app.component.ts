@@ -14,6 +14,7 @@ import { animacionRutas } from './router.animation';
 export class AppComponent {
 
   prepareRoute(outlet: RouterOutlet): string | void{
+    console.log(outlet.activatedRoute.snapshot.routeConfig?.path)
     if(outlet.isActivated) return outlet.activatedRoute.snapshot.routeConfig?.path
   }
   
