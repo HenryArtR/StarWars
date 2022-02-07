@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CheckUserGuard } from './shared/guards/check-user.guard';
 import { HomeComponent } from './starwars/pages/home/home.component';
 import { InfoShipsComponent } from './starwars/pages/info-ships/info-ships.component';
 import { PilotsComponent } from './starwars/pages/info-ships/pilots/pilots.component';
@@ -12,10 +13,8 @@ const routes: Routes = [
     path: '', component: HomeComponent,
   },
   {
-    path: 'home', component: HomeComponent,
-  },
-  {
-    path: 'listado', component: ListadoComponent
+    path: 'listado', component: ListadoComponent,
+    canActivate: [CheckUserGuard]
   },
   {
     path: 'starships/:id', component: InfoShipsComponent

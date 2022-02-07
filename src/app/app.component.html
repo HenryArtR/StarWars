@@ -1,24 +1,33 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-between">
     <!-- Estilizar contenido -->
-    <div class="col-2">
-      
+    <p class="text-wrap fw-bold fs-3 badge bg-dark">{{texto | titlecase}}</p>
+    <div class="col-4 d-flex align-items-start">
+      <img src="favicon.ico" class= "img-fluid" alt="">
     </div>
     <!-- fin -->
-    <div class="col-2">
-      <img src="../assets/img/starwarslogo.png" routerLink="home" class="img-fluid" alt="">
+    <div class="col col-md-2 d-flex justify-content-center align-items-center">
+      <img src="../assets/img/starwarslogo.png" routerLink="" class="img-fluid" alt="">
     </div>
     
-    <div class="col-2">
+    <div class="col-4 d-flex align-items-start justify-content-end">
       <div class="btn-group d-flex justify-content-end">
-        <button class="btn btn-outline-dark" routerLink="login">
+        
+        <button *ngIf="!registrado; else salir" class="btn btn-outline-dark" routerLink="login">
           Log in
         </button>
         <button class="btn btn-outline-dark" routerLink="signUp">
           Sign up
         </button>
+
+        <ng-template #salir>
+          <button class="btn btn-outline-dark" (click)="logOut()">
+            Log out
+          </button>
+        </ng-template>
       </div>
     </div>
+    
 
   </div>
 

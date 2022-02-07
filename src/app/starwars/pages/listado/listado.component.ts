@@ -9,6 +9,12 @@ import { UserDataService } from '../../services/user-data.service';
   selector: 'app-listado',
   templateUrl: './listado.component.html',
   styles: [
+    `
+    ul {
+      cursor: pointer;
+    }
+    
+    `
   ]
 })
 export class ListadoComponent implements OnInit {

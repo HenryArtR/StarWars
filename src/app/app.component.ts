@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { animacionRutas } from './router.animation';
+import { UserDataService } from './starwars/services/user-data.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,32 @@ import { animacionRutas } from './router.animation';
   ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+  nombreUsr: string = '';
+  apellidoUsr: string = '';
+  texto: string = '';
+  registrado: boolean = false
+
+  constructor(private userdata: UserDataService, private router: Router){}
+
+  ngOnInit() {
+    this.userdata.getnombre$().subscribe( nombre => this.nombreUsr = nombre)
+    this.userdata.getapellido$().subscribe( apellido => {
+      this.apellidoUsr = apellido
+      this.texto = `Hola ${this.nombreUsr} ${this.apellidoUsr}`
+    })
+    this.userdata.getRegistro$().subscribe(registro => this.registrado = registro)
+  }
+
+  logOut(){
+    this.userdata.logOut()
+    this.texto = ''
+    this.router.navigate([''])
+  }
+
 
   prepareRoute(outlet: RouterOutlet): string | void{
-    console.log(outlet.activatedRoute.snapshot.routeConfig?.path)
     if(outlet.isActivated) return outlet.activatedRoute.snapshot.routeConfig?.path
   }
   

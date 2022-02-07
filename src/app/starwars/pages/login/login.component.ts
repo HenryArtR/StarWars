@@ -12,11 +12,12 @@ import { UserDataService } from '../../services/user-data.service';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
+
   oculto: boolean = true;
   texto: string = '';
+  form: FormGroup;
 
-  constructor(private _builder: FormBuilder, private router: Router, private srvData: UserDataService) {
+  constructor(private srvData: UserDataService, private _builder: FormBuilder) {
     this.form = this._builder.group({
       usuario: ['', Validators.required],
       contrasena: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(14)]],
@@ -24,25 +25,13 @@ export class LoginComponent implements OnInit {
   }
 
   enviar(valor: Login){
-    let userLocal = JSON.parse(localStorage.getItem(valor.usuario)!)
-    if(this.form.valid && !userLocal){
-      this.texto = 'El usuario no existe'
-      this.oculto = false
-      this.form.get('usuario')?.reset()
-    }else if (this.form.valid && valor.contrasena == userLocal.contrasena) {
-      this.srvData.setNombre(userLocal.nombre)
-      this.srvData.setApellido(userLocal.apellido)
-      this.router.navigate(['listado'])
-      this.oculto = true
-      this.form.reset()
-    }else if(this.form.valid && valor.contrasena != userLocal.contrasena){
-      this.texto = 'La contraseña es incorrecta'
-      this.oculto = false  
-      this.form.get('contrasena')?.reset()
-    }else{
+    if(valor){
       this.oculto = false
       this.texto = 'Rellena todo el formulario'
     }
+    this.srvData.authUsr(valor)
+    this.oculto = this.srvData.oculto
+    this.texto = this.srvData.texto
     
     
   }
