@@ -17,6 +17,8 @@ export class UserDataService {
   constructor( private router: Router) {
   }
 
+
+
   getRegistro$(): Observable<boolean>{
     return this._resgistrado$.asObservable()
   }
@@ -28,20 +30,21 @@ export class UserDataService {
     return this._apellido$.asObservable()
   }
 
+
   authUsr(usr: Login){
     let userLocal = JSON.parse(localStorage.getItem(usr.usuario)!)
     if(usr.usuario && !userLocal){
       this.texto = 'El usuario no existe'
       this.oculto = false
-    }else if (usr.contrasena == userLocal.contrasena) {
+    }else if (usr.contrasena == userLocal.contrasena && usr.usuario == userLocal.usuario) {
       this._nombre$.next(userLocal.nombre)
       this._apellido$.next(userLocal.apellido)
       this._resgistrado$.next(true)
-      this.router.navigate(['listado'])
       this.oculto = true
+      this.router.navigate(['listado'])
     }else if(usr.contrasena != userLocal.contrasena){
       this.texto = 'La contraseña es incorrecta'
-      this.oculto = false  
+      this.oculto = false
     } 
   }
 

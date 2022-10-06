@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { CheckUserGuard } from 'src/app/shared/guards/check-user.guard';
 import { Formulario } from '../../interfaces/formulario.interface';
+import { UserDataService } from '../../services/user-data.service';
 
 
 
@@ -15,9 +16,9 @@ export class SignUpComponent implements OnInit {
   form: FormGroup;
   oculto: boolean = true;
   noExist: boolean = true;
-  
 
-  constructor(private _builder: FormBuilder, private router: Router) {
+
+  constructor(private _builder: FormBuilder, private user: UserDataService, private checkuser: CheckUserGuard) {
     this.form = this._builder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -28,12 +29,13 @@ export class SignUpComponent implements OnInit {
   }
 
   enviar(valor: Formulario){
+    let {usuario, contrasena} = valor
+    let newuser = {usuario, contrasena}
     if (this.form.valid && !JSON.parse(localStorage.getItem(valor.usuario)!)) {
-      localStorage.setItem(valor.usuario, JSON.stringify(valor))    
-      this.noExist = true
-      this.oculto = true
+      localStorage.setItem(valor.usuario, JSON.stringify(valor))
       this.form.reset()
-      this.router.navigate(['listado'])
+      this.checkuser.registrocheck = true
+      this.user.authUsr(newuser)
     }else if (JSON.parse(localStorage.getItem(valor.usuario)!)) {
       this.noExist = false
     }else{
@@ -41,8 +43,10 @@ export class SignUpComponent implements OnInit {
     }
     
   }
-
+  
   ngOnInit(): void {
   }
+
+  
 
 }

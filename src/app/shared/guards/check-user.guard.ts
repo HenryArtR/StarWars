@@ -11,7 +11,7 @@ export class CheckUserGuard implements CanActivate {
   registrocheck: boolean = false;
   constructor( private userdata: UserDataService){}
 
-  canActivate(): boolean{
+  canActivate(): boolean {
     this.userdata.getRegistro$().subscribe(registro => this.registrocheck = registro)
     return this.registrocheck
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Login } from '../../interfaces/formulario.interface';
 import { UserDataService } from '../../services/user-data.service';
 
@@ -32,11 +31,8 @@ export class LoginComponent implements OnInit {
     this.srvData.authUsr(valor)
     this.oculto = this.srvData.oculto
     this.texto = this.srvData.texto
-    
-    
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
